@@ -14,6 +14,7 @@ def index():
 
 @sockets.route('/echo')
 def echo_socket(ws):
+    print 'aaaaa'
     while True:
         message = ws.receive()
         ws.send(message)
