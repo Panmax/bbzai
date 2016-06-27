@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_sockets import Sockets
 
 app = Flask(__name__)
@@ -9,7 +9,7 @@ sockets = Sockets(app)
 
 @app.route('/')
 def index():
-    return 'flask app'
+    return render_template('test.html')
 
 
 @sockets.route('/echo')
