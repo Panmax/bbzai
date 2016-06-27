@@ -3,7 +3,7 @@ from flask_socketio import SocketIO
 
 import leancloud
 
-leancloud.init("3searoQGvzcFv2N1S4mj0yKU-gzGzoHsz", "TYSYkoSOHab4uPqfV7Af7uRg")
+leancloud.init("3searoQGvzcFv2N1S4mj0yKU-gzGzoHsz", master_key='TH4wgjafdmJLeaxozoyaDQAc')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
