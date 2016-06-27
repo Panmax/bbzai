@@ -1,19 +1,24 @@
 # coding: utf-8
 
-from flask import Flask
-from flask_sockets import Sockets
+from flask import Flask, render_template
+from flask_socketio import SocketIO
+
 
 app = Flask(__name__)
-sockets = Sockets(app)
+app.config['SECRET_KEY'] = 'secret!'
+socketio = SocketIO(app)
 
 
 @app.route('/')
 def index():
-    return 'flask app'
+    return render_template('test.html')
 
 
-@sockets.route('/echo')
-def echo_socket(ws):
-    while True:
-        message = ws.receive()
-        ws.send(message)
+@socketio.on('message')
+def handle_message(message):
+    print('received message: ' + message)
+
+
+@socketio.on('my event')
+def handle_my_custom_event(json):
+    print('received json: ' + str(json))
