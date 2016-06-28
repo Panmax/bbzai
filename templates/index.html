@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $("#ready-button").click(function () {
+        $.post('/j/ready', {}, function (data) {
+          console.log(data)
+        })
+      });
+
+      $("#zan-button").click(function () {
+        $.post('/j/action', {
+          action: 'zan'
+        }, function (data) {
+          console.log(data)
+        })
+      });
+
+      $("#gong-button").click(function () {
+        $.post('/j/action', {
+          action: 'gong'
+        }, function (data) {
+          console.log(data)
+        })
+      });
+
+      $("#fang-button").click(function () {
+        $.post('/j/action', {
+          action: 'fang'
+        }, function (data) {
+          console.log(data)
+        })
+      });
+      
+      function get_data() {
+        $.get('/j/hello', {
+        }, function (data) {
+          $("#result").text(data)
+        })
+      }
+
+      setInterval(function () {
+        get_data();
+      }, 1000);
+    });
+  </script>
+</head>
+<body>
+<div id="sse">
+  <button id="ready-button">准备</button>
+  <button id="zan-button">攒气</button>
+  <button id="gong-button">进攻</button>
+  <button id="fang-button">防守</button>
+  <div id="result">aaaa</div>
+</div>
+</body>
+</html>
