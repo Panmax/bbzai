@@ -25,7 +25,6 @@ def load_user(user_id):
 app = Flask(__name__)
 
 app.secret_key = 'hard to guess string'
-login_manager.session_protection = 'strong'
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
